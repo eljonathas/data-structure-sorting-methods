@@ -1,52 +1,37 @@
+from math import log
 import time
 import random
 import sys
 
 swap_times = 0
+comparison_quantity = 0
 
 
 def quick_sort_log():
     global swap_times
+    global comparison_quantity
 
     logs = []
 
     sys.setrecursionlimit(100000)
 
-    # test quick sort to random list with 100 elements
-    swap_times = 0
-    arr = [random.randint(0, 100) for i in range(100)]
-    start_time = time.time()
-    quick_sort_desc(arr)
-    logs.append([100, time.time() - start_time, swap_times])
+    for i in range(20):
+        # test quick sort to random list with 100 elements
+        swap_times = 0
+        comparison_quantity = int(1000 * log(1000))
+        arr = [random.randint(0, 100) for i in range(1000)]
+        start_time = time.time()
+        quick_sort_desc(arr)
+        logs.append([1000, time.time() - start_time,
+                    swap_times, comparison_quantity])
 
-    # test quick sort to random list with 1000 elements
-    swap_times = 0
-    arr = [random.randint(0, 100) for i in range(1000)]
-    start_time = time.time()
-    quick_sort_desc(arr)
-    logs.append([1000, time.time() - start_time, swap_times])
-
-    # test quick sort to random list with 10000 elements
-    swap_times = 0
-    arr = [random.randint(0, 100) for i in range(10000)]
-    start_time = time.time()
-    quick_sort_desc(arr)
-    logs.append([10000, time.time() - start_time, swap_times])
-
-    # test quick sort to random list with 100000 elements
-    swap_times = 0
-    arr = [random.randint(0, 100) for i in range(100000)]
-    start_time = time.time()
-    quick_sort_desc(arr)
-    logs.append([100000, time.time() - start_time, swap_times])
-
-    f = open("../logs/quick_sort_log.txt", "w")
+    f = open('../logs/quick_sort_log.txt', "w")
 
     f.write("quick sort log:\n")
-    f.write("number of elements, time, number of comparisons\n")
+    f.write("number of elements, time, number of swaps, number of comparisons\n")
     for i in range(len(logs)):
         f.write(str(logs[i][0]) + ", " + str(logs[i][1]) +
-                ", " + str(logs[i][2]) + "\n")
+                ", " + str(logs[i][2]) + ", " + str(logs[i][3]) + "\n")
 
     f.close()
 
@@ -60,7 +45,7 @@ def quick_sort_desc(arr):
         pivot = arr[0]
         left = [x for x in arr[1:] if x >= pivot]
         right = [x for x in arr[1:] if x < pivot]
-        swap_times += 1
+        swap_times += len(left) + len(right)
         return quick_sort_desc(left) + [pivot] + quick_sort_desc(right)
 
 
