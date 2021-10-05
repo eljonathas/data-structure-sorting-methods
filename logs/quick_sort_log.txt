@@ -1,0 +1,6 @@
+quick sort log:
+number of elements, time, number of comparisons
+100, 0.0, 68
+1000, 0.0, 899
+10000, 0.12993311882019043, 9899
+100000, 8.935553312301636, 99899
