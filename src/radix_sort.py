@@ -7,35 +7,8 @@
 import time
 import random
 
-qtd_of_comparisons = 0
-qtd_of_swaps = 0
-
-
-def radix_sort_log():
-    logs = []
-
-    for i in range(20):
-        # Teste com uma lista de 1000 números aleatórios
-        random_list = [random.randint(0, 100) for i in range(1000)]
-        start_time = time.time()
-        radix_sort(random_list)
-        logs.append([1000, time.time() - start_time])
-
-    f = open("../logs/radix_sort_log.txt", "w")
-
-    f.write("Radix sort logs:\n")
-    f.write("Quantity of items, time\n")
-
-    for log in logs:
-        f.write(str(log[0]) + ", " + str(log[1]) + "\n")
-
-    f.close()
-
 
 def radix_sort(vetor):
-    global qtd_of_comparisons
-    global qtd_of_swaps
-
     # Ordena números inteiros de base 10
     base = 10
     # Serve como uma bandeira para saber quando a ordenação está completa
@@ -74,6 +47,3 @@ def radix_sort(vetor):
                 vetor.append(numero)
 
     return vetor
-
-
-radix_sort_log()

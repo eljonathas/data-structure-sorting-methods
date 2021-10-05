@@ -1,36 +1,5 @@
-import random as rd
-import time
-import sys
-
 comparacoes, atribuicoes = 0, 0
 comparacoes_1, atribuicoes_1 = 0, 0
-
-
-def insertion_sort_log():
-    logs = []
-
-    global comparacoes_1
-    global atribuicoes_1
-
-    for i in range(20):
-        # Test for list with 100 items
-        comparacoes_1, atribuicoes_1 = 0, 0
-        array = [rd.randint(0, 100) for i in range(1000)]
-        start_time = time.time()
-        Insertion_Inverse(array)
-        end_time = time.time()
-        logs.append([1000, end_time - start_time,
-                    comparacoes_1, atribuicoes_1])
-
-    f = open("../logs/insertion_sort_log.txt", "w")
-
-    f.write("Insertion Sort log: \n")
-    f.write("N de elementos, Tempo, Comparacoes, Atribuicoes:\n")
-
-    for i in range(len(logs)):
-        f.write("{}, {}, {}, {}\n".format(
-            logs[i][0], logs[i][1], logs[i][2], logs[i][3]))
-    f.close()
 
 
 def Insertion(array):
@@ -48,7 +17,6 @@ def Insertion(array):
                 atribuicoes += 2
                 i -= 1
             else:
-
                 break
 
 
@@ -69,6 +37,3 @@ def Insertion_Inverse(array):
             else:
 
                 break
-
-
-insertion_sort_log()
