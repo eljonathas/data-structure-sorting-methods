@@ -25,8 +25,13 @@ while execution:
     # Escolher uma opção
     print(parse_text_color(
         "1 - Radix Sort\n2 - Quick Sort\n3 - Insertion Sort\n4 - Sair do programa", "1;32"))
-    option = int(input(parse_text_color("Escola uma opção: ", "1;33")))
+    option = int(input(parse_text_color("Escolha uma opção: ", "1;33")))
     clear_console()
+
+    if option == 4:
+        execution = False
+        print(parse_text_color("Programa finalizado ❌", "1;31"))
+        break
 
     # Escolher o tipo de ordenação
     print(parse_text_color(
@@ -56,9 +61,12 @@ while execution:
         # Inicia o tempo de execução
         start_time = time.time()
 
+        # Cria um vetor cópia do vetor inicial
+        initial_array = generated_array.copy()
+
         # Ordena o vetor
         sorted_array = radix_sort(generated_array)
-        print(f"Vetor de entrada: {generated_array}")
+        print(f"Vetor de entrada: {initial_array}")
         print(f"Vetor ordenado: {sorted_array}")
         print(f"Tempo de execução: {time.time() - start_time}")
         print()
@@ -68,9 +76,12 @@ while execution:
         # Inicia o tempo de execução
         start_time = time.time()
 
+        # Cria um vetor cópia do vetor inicial
+        initial_array = generated_array.copy()
+
         # Ordena o vetor
         sorted_array = quick_sort(generated_array)
-        print(f"Vetor de entrada: {generated_array}")
+        print(f"Vetor de entrada: {initial_array}")
         print(f"Vetor ordenado: {sorted_array}")
         print(f"Tempo de execução: {time.time() - start_time}")
         print()
@@ -80,16 +91,16 @@ while execution:
         # Inicia o tempo de execução
         start_time = time.time()
 
+        # Cria um vetor cópia do vetor inicial
+        initial_array = generated_array.copy()
+
         # Ordena o vetor
         sorted_array, comparisons, swap = Insertion(generated_array)
-        print(f"Vetor de entrada: {generated_array}")
+        print(f"Vetor de entrada: {initial_array}")
         print(f"Vetor ordenado: {sorted_array}")
         print(f"Quantidade de comparações: {comparisons}")
         print(f"Quantidade de trocas: {swap}")
         print(f"Tempo de execução: {time.time() - start_time}")
         print()
-    elif option == 4:
-        print(parse_text_color("Programa finalizado ❌", "1;31"))
-        execution = False
     else:
         print(parse_text_color("Opção inválida ⚠️", "1;31"))
