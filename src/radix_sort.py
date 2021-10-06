@@ -4,9 +4,6 @@
 # é o número de dígitos significativos do maior número e n é o nnúmero de
 # na lista. Ele possui possui uma complexidade espacial de O(n), pois é
 # necessário espaço para armazenar cada balde
-import time
-import random
-
 
 def radix_sort(vetor):
     # Ordena números inteiros de base 10
